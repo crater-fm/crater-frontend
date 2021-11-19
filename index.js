@@ -3,7 +3,12 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
-var port = process.env.PORT || 80
+
+if (process.env.ACTIVE_ENV = 'DEV') {
+    var port = process.env.DEV_PORT
+} else if (process.env.ACTIVE_ENV = 'PROD') {
+    var port = process.env.PROD_PORT
+}
 
 app.use(express.static(path.join(__dirname, 'build')));
 

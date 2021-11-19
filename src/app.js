@@ -5,13 +5,15 @@ import ResultsList from './ResultsList'
 import Filter from './Filter'
 import LoginControl from './LoginControl.js'
 import axios from "axios";
+const dotenv = require('dotenv');
+dotenv.config();
 
 // TODO: figure out how to use React Native Safe Area Context
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             searchValue: '',
             searchResults: [],
             loading: true
@@ -27,10 +29,17 @@ class App extends React.Component {
     handleSearchValueSubmit(event) {
         const searchValue = this.state.searchValue;
 
+        if (process.env.ACTIVE_ENV = 'DEV') {
+            const apiURL = `${process.env.DEV_BACKEND}/api/search/${searchValue}`
+        } else if (process.env.ACTIVE_ENV = 'PROD') {
+            const apiURL = `${process.env.PROD_BACKEND}/api/search/${searchValue}`
+        }
+
+
         event.preventDefault();
-        axios.get(`http://127.0.0.1:8000/api/search/${searchValue}`)
+        axios.get(apiURL)
             .then((res) => {
-                this.setState({searchResults: res.data});
+                this.setState({ searchResults: res.data });
             })
             .catch(function (error) {
                 // handle error
