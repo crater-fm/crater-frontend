@@ -6,7 +6,7 @@ const app = express();
 
 var port = process.env.PORT || 80
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'frontend-react-app/build')));
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

@@ -28,19 +28,9 @@ class App extends React.Component {
 
     handleSearchValueSubmit(event) {
         const searchValue = this.state.searchValue;
-        var apiURL = ''
-        if (process.env.ACTIVE_ENV === 'DEV') {
-            apiURL = `${process.env.DEV_BACKEND}/api/search/${searchValue}`
-        } else if (process.env.ACTIVE_ENV === 'PROD') {
-            apiURL = `${process.env.PROD_BACKEND}/api/search/${searchValue}`
-        } else {
-            apiURL = `${process.env.DEV_BACKEND}/api/search/${searchValue}`
-            console.log(apiURL)
-        }
-
 
         event.preventDefault();
-        axios.get(apiURL)
+        axios.get(`http://127.0.0.1:8000/api/search/${searchValue}`)
             .then((res) => {
                 this.setState({ searchResults: res.data });
             })

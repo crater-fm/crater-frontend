@@ -1,0 +1,12 @@
+To deploy, from root:
+
+npm install
+cd frontend-react-app
+npm install
+npm run build
+cd ..
+git add .
+git commit -m 'message'
+git push
+heroku git:remote -a crater-frontend
+git push heroku master
