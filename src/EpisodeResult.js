@@ -47,6 +47,8 @@ class EpisodeResult extends Component {
             case 12:
                 monthStr = 'Dec';
                 break;
+            default:
+                break;
         }
 
         let dateStr = date.getDate().toString();

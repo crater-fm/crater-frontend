@@ -4,11 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
-if (process.env.ACTIVE_ENV = 'DEV') {
-    var port = process.env.DEV_PORT
-} else if (process.env.ACTIVE_ENV = 'PROD') {
-    var port = process.env.PROD_PORT
-}
+var port = process.env.PORT || 80
 
 app.use(express.static(path.join(__dirname, 'build')));
 

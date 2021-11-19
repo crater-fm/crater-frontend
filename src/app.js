@@ -28,11 +28,14 @@ class App extends React.Component {
 
     handleSearchValueSubmit(event) {
         const searchValue = this.state.searchValue;
-
-        if (process.env.ACTIVE_ENV = 'DEV') {
-            const apiURL = `${process.env.DEV_BACKEND}/api/search/${searchValue}`
-        } else if (process.env.ACTIVE_ENV = 'PROD') {
-            const apiURL = `${process.env.PROD_BACKEND}/api/search/${searchValue}`
+        var apiURL = ''
+        if (process.env.ACTIVE_ENV === 'DEV') {
+            apiURL = `${process.env.DEV_BACKEND}/api/search/${searchValue}`
+        } else if (process.env.ACTIVE_ENV === 'PROD') {
+            apiURL = `${process.env.PROD_BACKEND}/api/search/${searchValue}`
+        } else {
+            apiURL = `${process.env.DEV_BACKEND}/api/search/${searchValue}`
+            console.log(apiURL)
         }
 
 
