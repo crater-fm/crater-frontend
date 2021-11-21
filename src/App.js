@@ -30,7 +30,7 @@ class App extends React.Component {
         const searchValue = this.state.searchValue;
 
         event.preventDefault();
-        axios.get(`http://127.0.0.1:8000/api/search/${searchValue}`)
+        axios.get(`https://crater-backend.herokuapp.com/api/search/${searchValue}`)
             .then((res) => {
                 this.setState({ searchResults: res.data });
             })
