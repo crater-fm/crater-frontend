@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './index.css';
-import Icons from './Icons.js'
+import '../index.css';
+import Icons from '../Icons.js'
 
 class EpisodeResult extends Component {
     render() {

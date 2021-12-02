@@ -1,19 +1,15 @@
 import React from 'react';
-import './index.css';
-import Searchbar from './routes/Searchbar'
-import ResultsList from './routes/ResultsList'
-import Filter from './Filter'
-import LoginControl from './LoginControl.js'
+import '../index.css';
+import Searchbar from './Searchbar'
+import ResultsList from './ResultsList'
 import axios from "axios";
-import { Outlet } from "react-router-dom";
-import { globalSearch } from './data';
 
 const dotenv = require('dotenv');
 dotenv.config();
 
 // TODO: figure out how to use React Native Safe Area Context
 
-class App extends React.Component {
+class SearchResults extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,13 +25,21 @@ class App extends React.Component {
         this.setState({ searchValue: value })
     }
 
+    
     handleSearchValueSubmit(event) {
         const searchValue = this.state.searchValue;
 
         event.preventDefault();
-
-        globalSearch(searchValue);
+        axios.get(`https://crater-backend.herokuapp.com/api/search/${searchValue}`)
+            .then((res) => {
+                this.setState({ searchResults: res.data });
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
     }
+    
 
 
 
@@ -54,4 +58,4 @@ class App extends React.Component {
         )
     }
 }
-export default App
+export default SearchResults

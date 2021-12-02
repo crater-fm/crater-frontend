@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css';
+import '../index.css';
 import ArtistResult from './ArtistResult.js'
 import DjResult from './DjResult.js'
 import EpisodeResult from './EpisodeResult.js'
@@ -46,10 +46,14 @@ const ListBody = (props) => {
         if (subResults.length > 0) {
             resultsList.push(subResults);
         }
-  
+
     })
 
-    return( <ul className='search-results'>{resultsList}</ul> )
+    return (
+        <div>
+            <ul className='search-results'>{resultsList}</ul>
+        </div>
+    )
 }
 
 

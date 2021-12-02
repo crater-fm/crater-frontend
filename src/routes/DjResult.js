@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import './index.css';
-import Icons from './Icons.js'
+import '../index.css';
+import Icons from '../Icons.js'
+import { Link } from "react-router-dom";
+
 
 class DjResult extends Component {
     render() {
         const value = this.props.value;
-        const djPageUrl = `http://crater.drewnollsch.com/djs/${value.dj_id}`
         return (
             <li className='dj'>
                 <div className='info'>
                     <h6>DJ</h6>
-                    <a href={djPageUrl}>{value.dj_name}</a>
+                    <Link to={`/dj/${value.dj_id}`} key={value.dj_id}>{value.dj_name}</Link>
                 </div>
                 <div className='links'>
                      <Icons value={value} />
