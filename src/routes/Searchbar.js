@@ -1,9 +1,4 @@
 import React from 'react';
-import {
-    Link,
-    useSearchParams
-} from "react-router-dom";
-import '../index.css';
 
 export default function Searchbar(props) {
     const searchValue = props.searchValue
@@ -17,7 +12,6 @@ export default function Searchbar(props) {
     }
 
     return (
-        <Link to={`/search/${searchValue}`} id="link">
             <form onSubmit={handleSubmit} action='/search'>
                 <input
                     className="searchbar"
@@ -27,7 +21,6 @@ export default function Searchbar(props) {
                     placeholder="Search for an Artist, DJ, Episode, Genre or Song"
                 />
             </form>
-        </Link>
     )
 
 }

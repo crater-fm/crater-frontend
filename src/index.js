@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import {
     Routes,
     Route,
-    Link,
     Outlet,
     BrowserRouter,
-    useSearchParams,
-    NavLink
+    NavLink,
+    useNavigate
 } from "react-router-dom";
 import './index.css';
 import LoginPage from './routes/LoginPage.js'
@@ -17,7 +16,6 @@ import ArtistPage from './routes/ArtistPage.js'
 import Homepage from './routes/Homepage.js'
 import NotFound from './routes/NotFound.js'
 import Searchbar from './routes/Searchbar.js'
-import getGlobalSearch from './data.js'
 
 
 function App() {
@@ -26,9 +24,9 @@ function App() {
             <Route path="/" element={<Layout />}>
                 <Route index element={<Homepage />} />
                 <Route path="login" element={<LoginPage />} />
-                <Route path="artists" element={<AllArtists />} />
-                    <Route path=":artistId" element={<ArtistPage />} />
-                <Route path="search:searchParam" element={<ResultsList />}/>
+                <Route exact path="artists" element={<AllArtists />} />
+                <Route path="artists/:artistId" element={<ArtistPage />} />
+                <Route path="search/:searchValue" element={<ResultsList />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
         </Routes>
@@ -37,21 +35,15 @@ function App() {
 
 function Layout() {
     let [searchValue, setSearchValue] = useState('');
-    let [searchResults, setSearchResults] = useState('');
-    let [searchParams, setSearchParams] = useSearchParams()
+    let navigate = useNavigate();
 
     function handleSearchValueChange(value) {
         setSearchValue(value);
     }
 
     function handleSearchValueSubmit(event) {
-        event.preventDefault()
-        let keyword = searchValue
-        if (keyword) {
-            setSearchParams({ keyword });
-        } else {
-            setSearchParams({});
-        }
+        event.preventDefault();
+        navigate(`./search/${searchValue}`, { replace: true });
     }
 
     return (

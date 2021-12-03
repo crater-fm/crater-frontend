@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import '../index.css';
 import Icons from '../Icons.js'
 
 class ArtistResult extends Component {

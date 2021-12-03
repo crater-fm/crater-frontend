@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import '../index.css';
+import { useParams } from "react-router-dom";
+import React, { useState, useEffect, Suspense } from 'react';
+import getGlobalSearch from '../data';
 import ArtistResult from './ArtistResult.js'
 import DjResult from './DjResult.js'
 import EpisodeResult from './EpisodeResult.js'
-
+import Loading from './Loading.js'
 
 const ListHeader = (props) => {
     const searchResults = props.searchResults;
@@ -24,18 +25,16 @@ const ListBody = (props) => {
 
     Object.entries(props.searchResults).forEach((entry) => {
         const [key, value] = entry;
+        var subResults = [];
         if (key === 'artists') {
-            var subResults = [];
             value.forEach((element, index) => {
                 subResults[index] = <ArtistResult key={index} value={element} />;
             })
         } else if (key === 'djs') {
-            var subResults = [];
             value.forEach((element, index) => {
                 subResults[index] = <DjResult key={index} value={element} />;
             })
         } else if (key === 'episodes') {
-            var subResults = [];
             value.forEach((element, index) => {
                 subResults[index] = <EpisodeResult key={index} value={element} />;
             })
@@ -56,19 +55,26 @@ const ListBody = (props) => {
     )
 }
 
+export default function ResultsList(props) {
+    let params = useParams();
+    let searchValue = params.searchValue;
+    let [searchResults, setSearchResults] = useState({});
 
-class ResultsList extends Component {
-    render() {
-        const { searchResults } = this.props
-        const { searchValue } = this.props
+    useEffect(() => {
+        let mounted = true;
+        getGlobalSearch(searchValue, setSearchResults, mounted);
+        return () => {
+            mounted = false;
+        }
+    }, [searchValue])
 
-        return (
-            <div className="results">
-                <ListHeader searchResults={searchResults} searchValue={searchValue} />
-                <ListBody searchResults={searchResults} searchValue={searchValue} />
-            </div>
-        )
-    }
+    return (
+        <div className="results">
+            <ListHeader searchResults={searchResults} searchValue={searchValue} />
+            <ListBody searchResults={searchResults} searchValue={searchValue} />
+            <Suspense fallback={<div>Loading Component</div>}>
+                {<Loading />}
+            </Suspense>
+        </div>
+    )
 }
-
-export default ResultsList

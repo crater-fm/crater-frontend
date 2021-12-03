@@ -1,9 +1,11 @@
 import axios from "axios";
 
-export function getArtistDetail(artistId) {
+export function getArtistDetails(artistId, setStateVar, mounted) {
     axios.get(`https://crater-backend.herokuapp.com/api/artist/${artistId}`)
         .then((res) => {
-            this.setState({ artistData: res.data });
+            if (mounted) {
+                setStateVar(res.data);
+            }
         })
         .catch(function (error) {
             // handle error
@@ -11,7 +13,7 @@ export function getArtistDetail(artistId) {
         })
 }
 
-export function getDjDetail(djId) {
+export function getDjDetails(djId) {
     axios.get(`https://crater-backend.herokuapp.com/api/dj/${djId}`)
         .then((res) => {
             this.setState({ djData: res.data });
@@ -22,10 +24,12 @@ export function getDjDetail(djId) {
         })
 }
 
-export default function getGlobalSearch(searchValue) {
+export default function getGlobalSearch(searchValue, setStateVar, mounted) {
     axios.get(`https://crater-backend.herokuapp.com/api/search/${searchValue}`)
         .then((res) => {
-            return res.data;
+            if (mounted) {
+                setStateVar(res.data);
+            }
         })
         .catch(function (error) {
             // handle error
