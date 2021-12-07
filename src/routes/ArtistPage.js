@@ -27,7 +27,7 @@ const ArtistDetailsLists = (props) => {
                 })
         } else if (key === 'song_artists') {
             value.forEach((element, index) => {
-                songArtistList[index] = <SongArtistResult key={index} value={element} />;
+                songArtistList[index] = <SongArtistResult artistName={artistName} key={index} value={element} />;
             })
         } else {
         console.log('Unrecognized data type')
@@ -38,16 +38,16 @@ const ArtistDetailsLists = (props) => {
         <div>
             <h3>Key Stats for {artistName}</h3>
             <ul>
-                <li> Episodes featuring this artist:
-                    <ul className='episode-list'>{episodeList}</ul>
+                <li>
+                    Top songs by this artist:
+                    <ul className='song-artist-list'>{songArtistList}</ul>
                 </li>
                 <li>
                     DJs who play this artist:
                     <ul className='dj-list'>{djList}</ul>
                 </li>
-                <li>
-                    Songs by this artist:
-                    <ul className='song-artist-list'>{songArtistList}</ul>
+                <li> Episodes featuring this artist:
+                    <ul className='episode-list'>{episodeList}</ul>
                 </li>
             </ul> 
         </div>      
