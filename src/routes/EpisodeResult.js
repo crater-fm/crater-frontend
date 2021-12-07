@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Icons from '../Icons.js'
 
 class EpisodeResult extends Component {
     render() {
@@ -57,7 +56,7 @@ class EpisodeResult extends Component {
         return (
             <li className='episode'>
                 <div className='info'>
-                    <a href={value.episode_url} target="_blank">{value.episode_name}</a>
+                    <a href={value.episode_url} rel='noopener'>{value.episode_name}</a>
                     <h6>Date: {dateString}</h6>
                 </div>
             </li>

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import Icons from '../Icons.js'
 
 class SongArtistResult extends Component {
     render() {

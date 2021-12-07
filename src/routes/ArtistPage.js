@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { getArtistDetails } from '../data.js'
-import Loading from './Loading.js'
 import EpisodeResult from './EpisodeResult.js'
 import DjListItem from './DjListItem.js'
 import SongArtistResult from './SongArtistResult.js'

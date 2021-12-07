@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Icons from '../Icons.js'
 import { Link } from "react-router-dom";
 
 
