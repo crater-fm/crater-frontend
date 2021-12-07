@@ -57,12 +57,8 @@ class EpisodeResult extends Component {
         return (
             <li className='episode'>
                 <div className='info'>
-                    <h6>Episode</h6>
-                    <p>{value.episode_name}</p>
-                    <p>Date: {dateString}</p>
-                </div>
-                <div className='links'>
-                     <Icons value={value} />
+                    <a href={value.episode_url} target="_blank">{value.episode_name}</a>
+                    <h6>Date: {dateString}</h6>
                 </div>
             </li>
         )

@@ -69,3 +69,7 @@ li{
     border:1px solid #E15D00;
     box-shadow: 0 0 5px #D9D7D5;
 }
+
+nav a {
+    padding: 0.25rem;
+}
