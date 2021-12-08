@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { getArtistDetails } from '../data.js'
 import EpisodeResult from './EpisodeResult.js'
-import DjListItem from './DjListItem.js'
+import DjResult from './DjResult.js'
 import SongArtistResult from './SongArtistResult.js'
 
 
@@ -23,11 +23,19 @@ const ArtistDetailsLists = (props) => {
             })
         } else if (key === 'djs') {
             value.forEach((element, index) => {
-                djList[index] = <DjListItem key={index} value={element} />;
+                djList[index] = 
+                    <div>
+                        <DjResult key={index} value={element} />
+                        <h6>Play Count: {element.episode_count}</h6>
+                    </div>;
                 })
         } else if (key === 'song_artists') {
             value.forEach((element, index) => {
-                songArtistList[index] = <SongArtistResult artistName={artistName} key={index} value={element} />;
+                songArtistList[index] =                 
+                <div>
+                    <SongArtistResult artistName={artistName} key={index} value={element} />
+                    <h6>Play Count: {element.play_count}</h6>
+                </div>;
             })
         } else {
         console.log('Unrecognized data type')

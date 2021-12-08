@@ -28,15 +28,27 @@ const ListBody = (props) => {
         var subResults = [];
         if (key === 'artists') {
             value.forEach((element, index) => {
-                subResults[index] = <ArtistResult key={index} value={element} />;
+                subResults[index] =
+                    <div>
+                        <h6>Artist</h6>
+                        <ArtistResult key={index} value={element} />
+                    </div>;
             })
         } else if (key === 'djs') {
             value.forEach((element, index) => {
-                subResults[index] = <DjResult key={index} value={element} />;
+                subResults[index] =
+                    <div>
+                        <h6>DJ</h6>
+                        <DjResult key={index} value={element} />
+                    </div>;
             })
         } else if (key === 'episodes') {
             value.forEach((element, index) => {
-                subResults[index] = <EpisodeResult key={index} value={element} />;
+                subResults[index] =
+                    <div>
+                        <h6>Episode</h6>
+                        <EpisodeResult key={index} value={element} />
+                    </div>;
             })
         } else {
             console.log('Unrecognized data type')

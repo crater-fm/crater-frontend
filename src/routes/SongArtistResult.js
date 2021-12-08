@@ -9,7 +9,6 @@ class SongArtistResult extends Component {
             <li className='song-artist'>
                 <div className='info'>
                     <a href={ytLink} target="_blank" rel="noreferrer">{value.song.song_name}</a>
-                    <h6>Play Count: {value.play_count}</h6>
                 </div>
             </li>
         )

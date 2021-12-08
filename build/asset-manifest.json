@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.e0ffc71c.chunk.css",
-    "main.js": "/static/js/main.f018437c.chunk.js",
-    "main.js.map": "/static/js/main.f018437c.chunk.js.map",
+    "main.js": "/static/js/main.aca47a47.chunk.js",
+    "main.js.map": "/static/js/main.aca47a47.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.f5cfbed7.js",
     "runtime-main.js.map": "/static/js/runtime-main.f5cfbed7.js.map",
-    "static/js/2.11bcf3e1.chunk.js": "/static/js/2.11bcf3e1.chunk.js",
-    "static/js/2.11bcf3e1.chunk.js.map": "/static/js/2.11bcf3e1.chunk.js.map",
+    "static/js/2.bed28553.chunk.js": "/static/js/2.bed28553.chunk.js",
+    "static/js/2.bed28553.chunk.js.map": "/static/js/2.bed28553.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.e0ffc71c.chunk.css.map": "/static/css/main.e0ffc71c.chunk.css.map",
-    "static/js/2.11bcf3e1.chunk.js.LICENSE.txt": "/static/js/2.11bcf3e1.chunk.js.LICENSE.txt",
+    "static/js/2.bed28553.chunk.js.LICENSE.txt": "/static/js/2.bed28553.chunk.js.LICENSE.txt",
     "static/media/Spotify_Icon_RGB_Black.0e932c0a.png": "/static/media/Spotify_Icon_RGB_Black.0e932c0a.png",
     "static/media/nts_icon.372614ae.png": "/static/media/nts_icon.372614ae.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f5cfbed7.js",
-    "static/js/2.11bcf3e1.chunk.js",
+    "static/js/2.bed28553.chunk.js",
     "static/css/main.e0ffc71c.chunk.css",
-    "static/js/main.f018437c.chunk.js"
+    "static/js/main.aca47a47.chunk.js"
   ]
 }

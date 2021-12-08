@@ -13,10 +13,10 @@ import LoginPage from './routes/LoginPage.js'
 import ResultsList from './routes/ResultsList.js'
 import AllArtists from './routes/AllArtists.js'
 import ArtistPage from './routes/ArtistPage.js'
+import DjPage from './routes/DjPage.js'
 import Homepage from './routes/Homepage.js'
 import NotFound from './routes/NotFound.js'
 import Searchbar from './routes/Searchbar.js'
-
 
 function App() {
     return (
@@ -24,8 +24,9 @@ function App() {
             <Route path="/" element={<Layout />}>
                 <Route index element={<Homepage />} />
                 <Route path="login" element={<LoginPage />} />
-                <Route exact path="artists" element={<AllArtists />} />
-                <Route path="artists/:artistId" element={<ArtistPage />} />
+                <Route exact path="artist" element={<AllArtists />} />
+                <Route path="artist/:artistId" element={<ArtistPage />} />
+                <Route path="dj/:djId" element={<DjPage />} />
                 <Route path="search/:searchValue" element={<ResultsList />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
@@ -51,7 +52,7 @@ function Layout() {
             <h1 className='page-header'>Crater</h1>
             <nav>
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="artists">Artists</NavLink>
+                <NavLink to="artist">Artists</NavLink>
                 <NavLink to="login">Login</NavLink>
                 <Searchbar searchValue={searchValue} onSearchValueChange={handleSearchValueChange} onSearchValueSubmit={handleSearchValueSubmit} />
             </nav>

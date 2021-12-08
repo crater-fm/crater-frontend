@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Icons from '../Icons.js'
 
-class ArtistResult extends Component {
-    render () {
+
+class ArtistListItem extends Component {
+    render() {
         const value = this.props.value;
-
         return (
             <li className='artist'>
-                <div className='info'>
+                <div>
                     <Link to={`/artist/${value.artist_id}`} key={value.artist_id}>{value.artist_name}</Link>
-                </div>
-                <div className='links'>
-                     <Icons value={value} />
+                    <h6>Play Count: {value.play_count}</h6>
                 </div>
             </li>
         )
     }
 }
 
-
-export default ArtistResult
+export default ArtistListItem

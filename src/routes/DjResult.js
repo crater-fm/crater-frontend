@@ -9,7 +9,6 @@ class DjResult extends Component {
         return (
             <li className='dj'>
                 <div className='info'>
-                    <h6>DJ</h6>
                     <Link to={`/dj/${value.dj_id}`} key={value.dj_id}>{value.dj_name}</Link>
                 </div>
                 <div className='links'>

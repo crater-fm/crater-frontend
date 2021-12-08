@@ -25,3 +25,16 @@ export function getArtistDetails(artistId, setStateVar, mounted) {
             console.log(error);
         })
 }
+
+export function getDjDetails(djId, setStateVar, mounted) {
+    axios.get(`https://crater-backend.herokuapp.com/api/dj/${djId}`)
+        .then((res) => {
+            if (mounted) {
+                setStateVar(res.data);
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+}
