@@ -6,9 +6,9 @@ import {
     Outlet,
     BrowserRouter,
     NavLink,
-    useNavigate
+    useNavigate,
+    Link
 } from "react-router-dom";
-import './index.css';
 import LoginPage from './routes/LoginPage.js'
 import ResultsList from './routes/ResultsList.js'
 import AllArtists from './routes/AllArtists.js'
@@ -49,13 +49,19 @@ function Layout() {
 
     return (
         <div>
-            <h1 className='page-header'>Crater</h1>
-            <nav>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="artist">Artists</NavLink>
-                <NavLink to="login">Login</NavLink>
+            <div className='page-header'>
+                <Link to="/" className='header-logo'>
+                    <div>
+                        <h1>Crater</h1>
+                        <h4>Human-powered music discovery.</h4>
+                    </div>
+                </Link>
                 <Searchbar searchValue={searchValue} onSearchValueChange={handleSearchValueChange} onSearchValueSubmit={handleSearchValueSubmit} />
-            </nav>
+                <nav>
+                    <NavLink to="artist">Artists</NavLink>
+                    <NavLink to="login">Login</NavLink>
+                </nav>
+            </div>
             <div className="content">
                 <Outlet />
             </div>
