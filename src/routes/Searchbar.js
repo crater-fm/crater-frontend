@@ -1,5 +1,4 @@
 import React from 'react';
-import TextField from '@mui/material/TextField'
 
 export default function Searchbar(props) {
     const searchValue = props.searchValue
@@ -15,13 +14,12 @@ export default function Searchbar(props) {
     return (
             <form onSubmit={handleSubmit} action='/search'>
                 <input
-                    className="searchbar"
+                    className="search-icon search-input"
                     type="search"
                     value={searchValue}
                     onChange={handleChange}
-                    placeholder="Search for an Artist, DJ, or Episode"
+                    placeholder="Search"
                 />
             </form>
     )
-
 }

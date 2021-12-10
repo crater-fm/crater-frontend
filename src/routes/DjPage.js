@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getDjDetails } from '../data.js'
 import EpisodeResult from './EpisodeResult.js'
-import ArtistResult from './ArtistResult.js'
-
 
 const DjDetailsLists = (props) => {
     const episodeList = [];
@@ -17,15 +15,18 @@ const DjDetailsLists = (props) => {
         }
         if (key === 'episodes') {
             value.forEach((element, index) => {
-                episodeList[index] = <EpisodeResult key={index} value={element} />;
+                episodeList[index] = 
+                    <li className='episode-listitem'>
+                        <EpisodeResult key={index} value={element} />
+                    </li>;
             })
         } else if (key === 'artists') {
             value.forEach((element, index) => {
-                artistList[index] = 
-                    <div>
-                        <ArtistResult key={index} value={element} />
+                artistList[index] =
+                    <li className='artist-listitem'>
+                        <Link to={`/artist/${element.artist_id}`} key={element.artist_id}>{element.artist_name}</Link>
                         <h6>Play Count: {element.play_count}</h6>
-                    </div>;
+                    </li>;
             })
         } else {
             console.log('Unrecognized data type')
@@ -35,15 +36,16 @@ const DjDetailsLists = (props) => {
     return (
         <div>
             <h3>Key Stats for {djName}</h3>
-            <ul>
-                <li>
-                    Artists this DJ spins:
+            <div className='statsColumnContainer'>
+                <div>
+                    <h5>Artists this DJ spins:</h5>
                     <ul className='artist-list'>{artistList}</ul>
-                </li>
-                <li> Episodes by this DJ:
+                </div>
+                <div>
+                    <h5>Episodes by this DJ:</h5>
                     <ul className='episode-list'>{episodeList}</ul>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     )
 }

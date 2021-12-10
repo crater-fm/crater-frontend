@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import { Link } from "react-router-dom";
 import '../index.css';
 import { getAllArtists } from '../data.js'
-import ArtistResult from './ArtistResult.js'
 import Loading from './Loading.js'
 
 const AllArtistsList = (props) => {
@@ -9,10 +9,10 @@ const AllArtistsList = (props) => {
     Object.entries(props.allArtists).forEach((entry, index) => {
         const [key, value] = entry
         list[index] =
-            <div>
-                <ArtistResult key={value.artist_id} value={value} />
-                <h6 key={index}>Play Count: {value.play_count}</h6>
-            </div>;
+                <li className="artist-listitem">
+                    <Link to={`/artist/${value.artist_id}`} key={value.artist_id}>{value.artist_name}</Link>
+                    <h6 key={index}>Play Count: {value.play_count}</h6>
+                </li>;
     })
     return (
         <div>

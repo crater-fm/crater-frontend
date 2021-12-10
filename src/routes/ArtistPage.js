@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getArtistDetails } from '../data.js'
 import EpisodeResult from './EpisodeResult.js'
-import DjResult from './DjResult.js'
 import SongArtistResult from './SongArtistResult.js'
 
 
@@ -19,23 +18,26 @@ const ArtistDetailsLists = (props) => {
         }
         if (key === 'episodes') {
             value.forEach((element, index) => {
-                episodeList[index] = <EpisodeResult key={index} value={element} />;
+                episodeList[index] = 
+                <li className = 'episode-listitem'>
+                    <EpisodeResult key={index} value={element} />
+                </li>;
             })
         } else if (key === 'djs') {
             value.forEach((element, index) => {
                 djList[index] = 
-                    <div>
-                        <DjResult key={index} value={element} />
+                    <li className='dj-listitem'>
+                        <Link to={`/dj/${element.dj_id}`} key={element.dj_id}>{element.dj_name}</Link>
                         <h6>Play Count: {element.episode_count}</h6>
-                    </div>;
+                    </li>;
                 })
         } else if (key === 'song_artists') {
             value.forEach((element, index) => {
                 songArtistList[index] =                 
-                <div>
-                    <SongArtistResult artistName={artistName} key={index} value={element} />
-                    <h6>Play Count: {element.play_count}</h6>
-                </div>;
+                    <li className='songartist-listitem'>
+                        <SongArtistResult artistName={artistName} key={index} value={element} />
+                        <h6>Play Count: {element.play_count}</h6>
+                    </li>;
             })
         } else {
         console.log('Unrecognized data type')
@@ -45,19 +47,20 @@ const ArtistDetailsLists = (props) => {
     return (
         <div>
             <h3>Key Stats for {artistName}</h3>
-            <ul>
-                <li>
-                    Top songs by this artist:
+            <div className='statsColumnContainer'>
+                <div>
+                    <h5>Top songs by this artist:</h5>
                     <ul className='song-artist-list'>{songArtistList}</ul>
-                </li>
-                <li>
-                    DJs who play this artist:
+                </div>
+                <div>
+                    <h5>DJs who play this artist:</h5>
                     <ul className='dj-list'>{djList}</ul>
-                </li>
-                <li> Episodes featuring this artist:
+                </div>
+                <div> 
+                    <h5>Episodes featuring this artist:</h5>
                     <ul className='episode-list'>{episodeList}</ul>
-                </li>
-            </ul> 
+                </div>
+            </div> 
         </div>      
     ) 
 }

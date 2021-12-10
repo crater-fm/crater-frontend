@@ -5,32 +5,39 @@ import {
     Route,
     Outlet,
     BrowserRouter,
-    NavLink,
     useNavigate,
-    Link
 } from "react-router-dom";
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme.js'
 import LoginPage from './routes/LoginPage.js'
 import ResultsList from './routes/ResultsList.js'
 import AllArtists from './routes/AllArtists.js'
+import AllDjs from './routes/AllDjs.js'
 import ArtistPage from './routes/ArtistPage.js'
 import DjPage from './routes/DjPage.js'
 import Homepage from './routes/Homepage.js'
 import NotFound from './routes/NotFound.js'
-import Searchbar from './routes/Searchbar.js'
+import Header from './Header.js'
+import CraterInfo from './routes/CraterInfo.js'
+import './index.css';
 
 function App() {
     return (
-        <Routes>
-            <Route path="/" element={<Layout />}>
-                <Route index element={<Homepage />} />
-                <Route path="login" element={<LoginPage />} />
-                <Route exact path="artist" element={<AllArtists />} />
-                <Route path="artist/:artistId" element={<ArtistPage />} />
-                <Route path="dj/:djId" element={<DjPage />} />
-                <Route path="search/:searchValue" element={<ResultsList />} />
-                <Route path="*" element={<NotFound />} />
-            </Route>
-        </Routes>
+        <ThemeProvider theme={theme}>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Homepage />} />
+                    <Route path="login" element={<LoginPage />} />
+                    <Route exact path="artist" element={<AllArtists />} />
+                    <Route path="artist/:artistId" element={<ArtistPage />} />
+                    <Route exact path="dj" element={<AllDjs />} />
+                    <Route path="dj/:djId" element={<DjPage />} />
+                    <Route path="search/:searchValue" element={<ResultsList />} />
+                    <Route exact path="info" element={<CraterInfo />} />
+                    <Route path="*" element={<NotFound />} />
+                </Route>
+            </Routes>
+        </ThemeProvider>
     );
 }
 
@@ -47,21 +54,10 @@ function Layout() {
         navigate(`./search/${searchValue}`, { replace: true });
     }
 
+
     return (
         <div>
-            <div className='page-header'>
-                <Link to="/" className='header-logo'>
-                    <div>
-                        <h1>Crater</h1>
-                        <h4>Human-powered music discovery.</h4>
-                    </div>
-                </Link>
-                <Searchbar searchValue={searchValue} onSearchValueChange={handleSearchValueChange} onSearchValueSubmit={handleSearchValueSubmit} />
-                <nav>
-                    <NavLink to="artist">Artists</NavLink>
-                    <NavLink to="login">Login</NavLink>
-                </nav>
-            </div>
+            <Header searchValue={searchValue} handleSearchValueChange={handleSearchValueChange} handleSearchValueSubmit={handleSearchValueSubmit}/>
             <div className="content">
                 <Outlet />
             </div>

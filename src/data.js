@@ -51,3 +51,16 @@ export function getAllArtists(setStateVar, mounted) {
             console.log(error);
         })
 }
+
+export function getAllDjs(setStateVar, mounted) {
+    axios.get('https://crater-backend.herokuapp.com/api/dj')
+        .then((res) => {
+            if (mounted) {
+                setStateVar(res.data);
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+}

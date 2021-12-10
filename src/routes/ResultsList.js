@@ -1,8 +1,6 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useState, useEffect, Suspense } from 'react';
 import getGlobalSearch from '../data';
-import ArtistResult from './ArtistResult.js'
-import DjResult from './DjResult.js'
 import EpisodeResult from './EpisodeResult.js'
 import Loading from './Loading.js'
 
@@ -29,26 +27,26 @@ const ListBody = (props) => {
         if (key === 'artists') {
             value.forEach((element, index) => {
                 subResults[index] =
-                    <div>
+                    <li className='artist-listitem'>
                         <h6>Artist</h6>
-                        <ArtistResult key={index} value={element} />
-                    </div>;
+                        <Link to={`/artist/${element.artist_id}`} key={element.artist_id}>{element.artist_name}</Link>
+                    </li>;
             })
         } else if (key === 'djs') {
             value.forEach((element, index) => {
                 subResults[index] =
-                    <div>
+                    <li className='dj-listitem'>
                         <h6>DJ</h6>
-                        <DjResult key={index} value={element} />
-                    </div>;
+                        <Link to={`/dj/${element.dj_id}`} key={element.dj_id}>{element.dj_name}</Link>
+                    </li>;
             })
         } else if (key === 'episodes') {
             value.forEach((element, index) => {
                 subResults[index] =
-                    <div>
+                    <li className='episode-listitem'>
                         <h6>Episode</h6>
                         <EpisodeResult key={index} value={element} />
-                    </div>;
+                    </li>;
             })
         } else {
             console.log('Unrecognized data type')

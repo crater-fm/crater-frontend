@@ -6,11 +6,9 @@ class SongArtistResult extends Component {
         let ytLink = `https://www.youtube.com/results?search_query=${this.props.artistName}+${value.song.song_name}`
 
         return (
-            <li className='song-artist'>
-                <div className='info'>
-                    <a href={ytLink} target="_blank" rel="noreferrer">{value.song.song_name}</a>
-                </div>
-            </li>
+            <div>
+                <a href={ytLink} target="_blank" rel="noreferrer">{value.song.song_name}</a>
+            </div>
         )
     }
 }

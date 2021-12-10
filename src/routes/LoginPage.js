@@ -4,7 +4,7 @@ export default function LoginPage() {
 
     return (
         <div>
-            <h2>Please Login.</h2>
+            <h2>Login function coming soon.</h2>
         </div>
     )
 }

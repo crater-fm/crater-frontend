@@ -1,0 +1,107 @@
+body {
+    font-family: 'Helvetica';
+    color: #222328;
+    background-color: #F8F5ED;
+}
+
+a {
+    text-decoration: none;
+    color: #201D1E;
+}
+
+a:hover {
+    color: #ff8f00;
+}
+
+ul {
+    list-style-type: none;
+    background-color: #FFFFFF;
+}
+
+li {
+  border-bottom: 1px solid #DDE2E4;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.crater-logo {
+    width: auto;
+    height: 35px;
+}
+.page-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: #222328;
+    padding: 10px;
+}
+
+.menu-search-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.menuLink {
+        color: #fff;
+        font-size: small;
+    }
+
+.call-to-action-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.call-to-action{
+}
+
+.curatorLogoContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    justify-content: center;
+    gap: 50px;
+}
+
+.statsColumnContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    justify-content: center;
+    gap: 50px;
+}
+
+input:focus { 
+    outline: none !important;
+    border-color: #ff8f00;
+ }
+
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+
+.search-icon {
+    padding-right: 25px;
+    background: url("./img/search-white.svg") no-repeat right;
+    background-size: 20px;
+}
+
+.search-input {
+    color: #fff;
+}

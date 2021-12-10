@@ -54,12 +54,10 @@ class EpisodeResult extends Component {
         let dateString = `${dateStr}-${monthStr}-${shortYearStr}`
 
         return (
-            <li className='episode'>
-                <div className='info'>
+                <div>
                     <a href={value.episode_url} target="_blank" rel="noreferrer">{value.episode_name}</a>
                     <h6>Date: {dateString}</h6>
                 </div>
-            </li>
         )
     }
 }
