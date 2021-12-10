@@ -1,8 +1,4 @@
 import React from 'react';
-import { linkedin } from '@fortawesome/free-brands-svg-icons'
-import { github } from '@fortawesome/free-brands-svg-icons'
-
-
 
 export default function CraterInfo() {
 
