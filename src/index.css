@@ -1,7 +1,11 @@
 body {
-    font-family: 'Helvetica';
+    font-family: "Roboto", sans-serif; 
     color: #222328;
     background-color: #F8F5ED;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -56,7 +60,6 @@ nav {
 
 .menuLink {
         color: #fff;
-        font-size: small;
     }
 
 .call-to-action-container{
