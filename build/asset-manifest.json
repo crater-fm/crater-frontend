@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.eb4734b6.chunk.css",
+    "main.css": "/static/css/main.63f33a62.chunk.css",
     "main.js": "/static/js/main.f6c63ba3.chunk.js",
     "main.js.map": "/static/js/main.f6c63ba3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.f5cfbed7.js",
@@ -8,7 +8,7 @@
     "static/js/2.0ca0e638.chunk.js": "/static/js/2.0ca0e638.chunk.js",
     "static/js/2.0ca0e638.chunk.js.map": "/static/js/2.0ca0e638.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.eb4734b6.chunk.css.map": "/static/css/main.eb4734b6.chunk.css.map",
+    "static/css/main.63f33a62.chunk.css.map": "/static/css/main.63f33a62.chunk.css.map",
     "static/js/2.0ca0e638.chunk.js.LICENSE.txt": "/static/js/2.0ca0e638.chunk.js.LICENSE.txt",
     "static/media/KXLU-Black.0ebff50a.png": "/static/media/KXLU-Black.0ebff50a.png",
     "static/media/crater-logo-white-cropped.f14c77ee.png": "/static/media/crater-logo-white-cropped.f14c77ee.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.f5cfbed7.js",
     "static/js/2.0ca0e638.chunk.js",
-    "static/css/main.eb4734b6.chunk.css",
+    "static/css/main.63f33a62.chunk.css",
     "static/js/main.f6c63ba3.chunk.js"
   ]
 }
