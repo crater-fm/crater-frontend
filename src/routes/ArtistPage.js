@@ -20,7 +20,7 @@ const ArtistDetailsLists = (props) => {
             value.forEach((element, index) => {
                 episodeList[index] = 
                 <li className = 'episode-listitem'>
-                    <EpisodeResult key={index} value={element} />
+                        <EpisodeResult key={element.episode_id} value={element} />
                 </li>;
             })
         } else if (key === 'djs') {

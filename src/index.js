@@ -8,6 +8,7 @@ import {
     useNavigate,
 } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme.js'
 import LoginPage from './routes/LoginPage.js'
 import ResultsList from './routes/ResultsList.js'
@@ -24,19 +25,21 @@ import './index.css';
 function App() {
     return (
         <ThemeProvider theme={theme}>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Homepage />} />
-                    <Route path="login" element={<LoginPage />} />
-                    <Route exact path="artist" element={<AllArtists />} />
-                    <Route path="artist/:artistId" element={<ArtistPage />} />
-                    <Route exact path="dj" element={<AllDjs />} />
-                    <Route path="dj/:djId" element={<DjPage />} />
-                    <Route path="search/:searchValue" element={<ResultsList />} />
-                    <Route exact path="info" element={<CraterInfo />} />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-            </Routes>
+            <CssBaseline>
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Homepage />} />
+                        <Route path="login" element={<LoginPage />} />
+                        <Route exact path="artist" element={<AllArtists />} />
+                        <Route path="artist/:artistId" element={<ArtistPage />} />
+                        <Route exact path="dj" element={<AllDjs />} />
+                        <Route path="dj/:djId" element={<DjPage />} />
+                        <Route path="search/:searchValue" element={<ResultsList />} />
+                        <Route exact path="info" element={<CraterInfo />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+                </Routes>
+            </CssBaseline>
         </ThemeProvider>
     );
 }
@@ -57,7 +60,7 @@ function Layout() {
 
     return (
         <div>
-            <Header searchValue={searchValue} handleSearchValueChange={handleSearchValueChange} handleSearchValueSubmit={handleSearchValueSubmit}/>
+            <Header searchValue={searchValue} handleSearchValueChange={handleSearchValueChange} handleSearchValueSubmit={handleSearchValueSubmit} />
             <div className="content">
                 <Outlet />
             </div>

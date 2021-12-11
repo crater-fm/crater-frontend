@@ -42,25 +42,6 @@ nav {
     width: auto;
     height: 35px;
 }
-.page-header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    background-color: #222328;
-    padding: 10px;
-}
-
-.menu-search-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 5px;
-}
-
-.menuLink {
-        color: #fff;
-    }
 
 .call-to-action-container{
     display: flex;
@@ -88,23 +69,4 @@ nav {
     justify-content: space-between;
     justify-content: center;
     gap: 50px;
-}
-
-input:focus { 
-    outline: none !important;
-    border-color: #ff8f00;
- }
-
-input[type="search"]::-webkit-search-cancel-button {
-    display: none;
-}
-
-.search-icon {
-    padding-right: 25px;
-    background: url("./img/search-white.svg") no-repeat right;
-    background-size: 20px;
-}
-
-.search-input {
-    color: #fff;
 }

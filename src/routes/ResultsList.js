@@ -45,7 +45,7 @@ const ListBody = (props) => {
                 subResults[index] =
                     <li className='episode-listitem'>
                         <h6>Episode</h6>
-                        <EpisodeResult key={index} value={element} />
+                        <EpisodeResult key={element.episode_id} value={element} />
                     </li>;
             })
         } else {

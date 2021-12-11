@@ -3,10 +3,12 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#222328',
+            main: '#ff8f00',
+            contrastText: '#222328'
         },
         secondary: {
-            main: '#ff8f00',
+            main: '#222328',
+            contrastText: '#fff'
         },
         background: {
             default: '#F8F5ED',
@@ -14,7 +16,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: 'Helvetica',
+        fontFamily: 'Roboto',
     },
 });
 
