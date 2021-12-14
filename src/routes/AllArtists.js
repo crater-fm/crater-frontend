@@ -1,24 +1,41 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import '../index.css';
 import { getAllArtists } from '../data.js'
-import Loading from './Loading.js'
+import Box from '@mui/material/Box'
+import ListItem from '@mui/material/ListItem'
+import List from '@mui/material/List'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemText from '@mui/material/ListItemText'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+
 
 const AllArtistsList = (props) => {
     const list = [];
     Object.entries(props.allArtists).forEach((entry, index) => {
         const [key, value] = entry
         list[index] =
-                <li className="artist-listitem">
-                    <Link to={`/artist/${value.artist_id}`} key={value.artist_id}>{value.artist_name}</Link>
-                    <h6 key={index}>Play Count: {value.play_count}</h6>
-                </li>;
+            <ListItem key={value.artist_id}>
+                <ListItemButton component="a" href={`/artist/${value.artist_id}`} dense>
+                        <ListItemText primary={value.artist_name} />
+                        <ListItemText primary={value.play_count} /> 
+                </ListItemButton>
+            </ListItem>
     })
     return (
-        <div>
-            <h3>Top Artists on Crater</h3>
-            <ul className='all-artists-list'>{list}</ul>
-        </div>
+        <Container sx={{
+            bgcolor: '#8BFFDC',
+            boxShadow: 1,
+            borderRadius: 1,
+            p: 2,
+            }}>
+            <Typography>Top Artists</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
+                <Typography>Artist</Typography>
+                <Typography>Play Count</Typography>
+            </Box>
+            <List>{list}</List>
+        </Container>
     )
 }
 
@@ -34,11 +51,8 @@ export default function AllArtists(props) {
     }, []);
 
     return (
-        <div className="all-artists">
+        <Box className="all-artists">
             <AllArtistsList allArtists={allArtists} />
-            <Suspense fallback={<div>Loading Component</div>}>
-                {<Loading />}
-            </Suspense>
-        </div>
+        </Box>
     )
 }

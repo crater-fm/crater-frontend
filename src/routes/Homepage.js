@@ -1,32 +1,126 @@
+import React, { useState } from 'react';
 import ntsLogo from "../img/nts_icon.png"
 import dublabLogo from '../img/dublab-logo-transparent.png'
 import kxluLogo from '../img/KXLU-Black.png'
+import Searchbar from './Searchbar.js'
+import Grid from '@mui/material/Grid'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Box from '@mui/material/Box'
+import AllArtists from './AllArtists.js'
+import AllDjs from './AllDjs.js'
+import AllEpisodes from './AllEpisodes.js'
 
-export default function Homepage() {
+
+function TabPanel(props) {
+    let value = props.value;
+
+    if (value === '0') {
+        return <AllArtists />;
+    } else if (value === '1') {
+        return <AllDjs />;
+    } else if (value === '2') {
+        return <AllEpisodes />;
+    } else {
+        return null;
+    }
+}
+
+export default function Homepage(props) {
+
+    // For Searchbar
+    const searchValue = props.searchValue;
+    const handleSearchValueChange = props.handleSearchValueChange;
+    const handleSearchValueSubmit = props.handleSearchValueSubmit;
+
+    // For mobile display Tabs
+    const [value, setValue] = useState('0');
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     return (
-        <div>
-            <br></br>
-            <div className='call-to-action-container'>
-                <h3 className='call-to-action'>Discover new music with Crater: <br></br>
-                Search for artists, DJs, and radio shows or browse top artists and DJs.</h3>
-            </div>
-            <br></br>
-            <h4>Our data comes from the following curators:</h4>
-            <div className='curatorLogoContainer'>
-                <a href="https://www.nts.live/" target="_blank" rel="noreferrer">
-                    <img alt="NTS Radio" src={ntsLogo}
-                        width="auto" height="150"></img>
-                </a>
-                <a href="https://www.dublab.com/" target="_blank" rel="noreferrer">
-                    <img alt="Dublab Future Roots Radio" src={dublabLogo}
-                        width="auto" height="150"></img>
-                </a>
-                <a href="https://kxlu.com/" target="_blank" rel="noreferrer">
-                    <img alt="KXLU Radio" src={kxluLogo}
-                        width="auto" height="150"></img>
-                </a>
-            </div>
-        </div>
+        <Box>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={12} xl={12}>
+                    <Typography>Discover new music with Crater</Typography>
+                </Grid>
+                <Grid item xs={12} md={12} xl={12}>
+                    <Searchbar searchValue={searchValue} onSearchValueChange={handleSearchValueChange} onSearchValueSubmit={handleSearchValueSubmit} />
+                </Grid>
+
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Grid item md={4} xl={4}>
+                        <AllArtists />
+                    </Grid>
+                    <Grid item md={4} xl={4}>
+                        <AllDjs />
+                    </Grid>
+                    <Grid item md={4} xl={4}>
+                        <AllEpisodes />
+                    </Grid>
+                </Box>
+
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                textColor="primary"
+                                indicatorColor="primary"
+                                aria-label="homepage tabs"
+                            >
+                                <Tab value='0' label="Artists" />
+                                <Tab value='1' label="DJs" />
+                                <Tab value='2' label="Radio Shows" />
+                            </Tabs>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TabPanel value={value} />
+                        </Grid>
+                    </Grid>
+                </Box>
+
+                <Grid item xs={12}>
+                    <Typography>Our data comes from the following curators:</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <Container sx={{
+                        display: 'flex',
+                        width: 100,
+                        justifyContent: 'center',
+                        gap: '25px',
+                    }}>
+                        <a href="https://www.nts.live/" target="_blank" rel="noreferrer">
+                            <Box
+                                component="img"
+                                alt="NTS Radio"
+                                src={ntsLogo}
+                                sx={{ width: 'auto', height: 100 }}
+                            />
+                        </a>
+                        <a href="https://www.dublab.com/" target="_blank" rel="noreferrer">
+                            <Box
+                                component="img"
+                                alt="Dublab Future Roots Radio"
+                                src={dublabLogo}
+                                sx={{ width: 'auto', height: 100 }}
+                            />
+                        </a>
+                        <a href="https://kxlu.com/" target="_blank" rel="noreferrer">
+                            <Box
+                                component="img"
+                                alt="KXLU Radio"
+                                src={kxluLogo}
+                                sx={{ width: 'auto', height: 100 }}
+                            />
+                        </a>
+                    </Container>
+                </Grid>
+            </Grid>
+        </Box>
     )
 }

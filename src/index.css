@@ -9,16 +9,11 @@ html {
 }
 
 a {
+    color: #222328;
     text-decoration: none;
-    color: #201D1E;
-}
-
-a:hover {
-    color: #ff8f00;
 }
 
 ul {
-    list-style-type: none;
     background-color: #FFFFFF;
 }
 
@@ -26,31 +21,9 @@ li {
   border-bottom: 1px solid #DDE2E4;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .crater-logo {
     width: auto;
     height: 35px;
-}
-
-.call-to-action-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.call-to-action{
 }
 
 .curatorLogoContainer {
@@ -58,7 +31,6 @@ nav {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    justify-content: center;
     gap: 50px;
 }
 
@@ -67,6 +39,5 @@ nav {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    justify-content: center;
     gap: 50px;
 }

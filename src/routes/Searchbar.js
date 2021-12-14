@@ -1,14 +1,17 @@
 import React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+import Container from '@mui/material/Container'
+import Button from '@mui/material/Button'
+
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 0.75),
     '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
+        backgroundColor: alpha(theme.palette.common.white, 0.95),
     },
     marginLeft: 0,
     width: '100%',
@@ -16,16 +19,9 @@ const Search = styled('div')(({ theme }) => ({
         marginLeft: theme.spacing(1),
         width: 'auto',
     },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -33,19 +29,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-                width: '20ch',
-            },
-        },
+        paddingLeft: '1em',
+        width: '60vw',
     },
 }));
 
-export default function SearchbarV2(props) {
+export default function Searchbar(props) {
     const searchValue = props.searchValue
 
     function handleChange(event) {
@@ -57,20 +46,40 @@ export default function SearchbarV2(props) {
     }
 
     return (
-        <Search>
-            <SearchIconWrapper>
-                <SearchIcon />
-            </SearchIconWrapper>
-            <form onSubmit={handleSubmit} action='/search'>
-                <StyledInputBase
-                    placeholder="Search…"
-                    value={searchValue}
-                    onChange={handleChange}
-                    inputProps={{
-                        'aria-label': 'search',
-                    }}
-                />
-            </form>
-        </Search>
+        <Container sx={{
+            bgcolor: '#D9D7D5',
+            boxShadow: 1,
+            borderRadius: 1,
+            p: 2,
+            minWidth: 300,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }}>
+            <Search>
+                <form onSubmit={handleSubmit} action='/search'>
+                    <StyledInputBase
+                        placeholder="Search for artists, DJs, or radio shows…"
+                        value={searchValue}
+                        onChange={handleChange}
+                        inputProps={{
+                            'aria-label': 'search',
+                        }}
+                    />
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        sx={{
+                            textTransform: 'capitalize',
+                            margin: 1,
+                            padding: 1,
+                            borderRadius: 1,
+                            boxShadow: 0,
+                        }}>
+                        Search
+                    </Button>
+                </form>
+            </Search>
+        </Container>
     )
 }

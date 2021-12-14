@@ -1,24 +1,41 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import '../index.css';
 import { getAllDjs } from '../data.js'
-import Loading from './Loading.js'
+import ListItem from '@mui/material/ListItem'
+import List from '@mui/material/List'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemText from '@mui/material/ListItemText'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
+
 
 const AllDjsList = (props) => {
     const list = [];
     Object.entries(props.allDjs).forEach((entry, index) => {
         const [key, value] = entry
         list[index] =
-                <li className="dj-listitem">
-                    <Link to={`/dj/${value.dj_id}`} key={value.dj_id}>{value.dj_name}</Link>
-                    <h6 key={index}>Episode Count: {value.episode_count}</h6>
-                </li>;
+                <ListItem key={value.dj_id}>
+                <ListItemButton component="a" href={`/dj/${value.dj_id}`} dense>
+                    <ListItemText primary={value.dj_name} />
+                    <ListItemText primary={value.episode_count} />
+                </ListItemButton>
+                </ListItem>
     })
     return (
-        <div>
-            <h3>Top DJs on Crater</h3>
-            <ul className='all-djs-list'>{list}</ul>
-        </div>
+        <Container sx={{
+            bgcolor: '#C1A6FF',
+            boxShadow: 1,
+            borderRadius: 1,
+            p: 2,
+        }}>
+            <Typography>Top DJs</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Typography>DJ</Typography>
+                <Typography>Episode Count</Typography>
+            </Box>
+            <List>{list}</List>
+        </Container>
     )
 }
 
@@ -34,11 +51,6 @@ export default function AllDjs(props) {
     }, []);
 
     return (
-        <div className="all-djs">
             <AllDjsList allDjs={allDjs} />
-            <Suspense fallback={<div>Loading Component</div>}>
-                {<Loading />}
-            </Suspense>
-        </div>
     )
 }
