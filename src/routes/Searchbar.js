@@ -3,34 +3,30 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
-
+import Box from '@mui/material/Box'
 
 
 const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.75),
     '&:hover': {
         backgroundColor: alpha(theme.palette.common.white, 0.95),
     },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-    },
+    // [theme.breakpoints.up('sm')]: {
+    //     marginLeft: theme.spacing(1),
+    //     width: 'auto',
+    // },
+    //width: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    marginRight: 10,
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: '1em',
-        width: '60vw',
     },
 }));
 
@@ -56,30 +52,31 @@ export default function Searchbar(props) {
             alignItems: 'center',
             justifyContent: 'center',
         }}>
-            <Search>
-                <form onSubmit={handleSubmit} action='/search'>
-                    <StyledInputBase
-                        placeholder="Search for artists, DJs, or radio shows…"
-                        value={searchValue}
-                        onChange={handleChange}
-                        inputProps={{
-                            'aria-label': 'search',
-                        }}
-                    />
+            <form onSubmit={handleSubmit} action='/search'>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignContent: 'center', width: '100%', height: '100%'}}>
+                    <Search>
+                        <StyledInputBase
+                            placeholder="Search for artists, DJs, or radio shows…"
+                            value={searchValue}
+                            onChange={handleChange}
+                            inputProps={{
+                                'aria-label': 'search',
+                            }}
+                        />
+                    </Search>
                     <Button
                         variant="contained"
                         type="submit"
                         sx={{
                             textTransform: 'capitalize',
-                            margin: 1,
-                            padding: 1,
                             borderRadius: 1,
                             boxShadow: 0,
+                            height: '100%',
                         }}>
                         Search
                     </Button>
-                </form>
-            </Search>
+                </Box>
+            </form>
         </Container>
     )
 }

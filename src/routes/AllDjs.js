@@ -11,20 +11,32 @@ import Box from '@mui/material/Box'
 
 
 const AllDjsList = (props) => {
-    const list = [];
-    Object.entries(props.allDjs).forEach((entry, index) => {
-        const [key, value] = entry
-        list[index] =
-                <ListItem key={value.dj_id}>
-                <ListItemButton component="a" href={`/dj/${value.dj_id}`} dense>
-                    <ListItemText primary={value.dj_name} />
-                    <ListItemText primary={value.episode_count} />
+    let djList = [];
+    let displayPage = props.displayPage;
+    let allDjs = props.allDjs;
+
+    allDjs.results.forEach((element, index) => {
+        djList[index] =
+                <ListItem key={element.dj_id}>
+                <ListItemButton component="a" href={`/dj/${element.dj_id}`} dense>
+                    <ListItemText>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Typography>{element.dj_name}</Typography>
+                            <Typography>{element.episode_count}</Typography>
+                        </Box>
+                    </ListItemText>
                 </ListItemButton>
                 </ListItem>
     })
+
+    // Concatenate results if rendered on the homepage
+    if (displayPage === 'homepage') {
+        djList = djList.slice(0, 5);
+    }
+
     return (
         <Container sx={{
-            bgcolor: '#C1A6FF',
+            bgcolor: '#FFB68C',
             boxShadow: 1,
             borderRadius: 1,
             p: 2,
@@ -34,13 +46,14 @@ const AllDjsList = (props) => {
                 <Typography>DJ</Typography>
                 <Typography>Episode Count</Typography>
             </Box>
-            <List>{list}</List>
+            <List>{djList}</List>
         </Container>
     )
 }
 
 export default function AllDjs(props) {
-    let [allDjs, setAllDjs] = useState({});
+    let displayPage = props.displayPage
+    let [allDjs, setAllDjs] = useState(null);
 
     useEffect(() => {
         let mounted = true;
@@ -50,7 +63,11 @@ export default function AllDjs(props) {
         }
     }, []);
 
+    if (allDjs === null) {
+        return null;
+    }
+
     return (
-            <AllDjsList allDjs={allDjs} />
+        <AllDjsList allDjs={allDjs} displayPage={displayPage}/>
     )
 }

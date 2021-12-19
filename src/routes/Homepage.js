@@ -13,16 +13,15 @@ import AllArtists from './AllArtists.js'
 import AllDjs from './AllDjs.js'
 import AllEpisodes from './AllEpisodes.js'
 
-
 function TabPanel(props) {
     let value = props.value;
 
     if (value === '0') {
-        return <AllArtists />;
+        return <AllArtists displayPage='homepage' />;
     } else if (value === '1') {
-        return <AllDjs />;
+        return <AllDjs displayPage='homepage' />;
     } else if (value === '2') {
-        return <AllEpisodes />;
+        return <AllEpisodes displayPage='homepage' />;
     } else {
         return null;
     }
@@ -42,7 +41,7 @@ export default function Homepage(props) {
     };
 
     return (
-        <Box>
+        <div>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={12} xl={12}>
                     <Typography>Discover new music with Crater</Typography>
@@ -50,40 +49,40 @@ export default function Homepage(props) {
                 <Grid item xs={12} md={12} xl={12}>
                     <Searchbar searchValue={searchValue} onSearchValueChange={handleSearchValueChange} onSearchValueSubmit={handleSearchValueSubmit} />
                 </Grid>
+                <Grid item md={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <AllArtists displayPage='homepage' />
+                </Grid>
+                <Grid item md={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <AllDjs displayPage='homepage' />
+                </Grid>
+                <Grid item md={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <AllEpisodes displayPage='homepage' />
+                </Grid>
+            </Grid>
 
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                    <Grid item md={4} xl={4}>
-                        <AllArtists />
-                    </Grid>
-                    <Grid item md={4} xl={4}>
-                        <AllDjs />
-                    </Grid>
-                    <Grid item md={4} xl={4}>
-                        <AllEpisodes />
-                    </Grid>
-                </Box>
+            <Grid container spacing={2} sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <Grid item xs={12}>
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        textColor="primary"
+                        indicatorColor="primary"
+                        aria-label="homepage tabs"
+                    >
+                        <Tab value='0' label="Artists" />
+                        <Tab value='1' label="DJs" />
+                        <Tab value='2' label="Episodes" />
+                    </Tabs>
+                </Grid>
+                <Grid item xs={12}>
+                    <TabPanel value={value} />
+                </Grid>
+            </Grid>
 
-                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <Tabs
-                                value={value}
-                                onChange={handleChange}
-                                textColor="primary"
-                                indicatorColor="primary"
-                                aria-label="homepage tabs"
-                            >
-                                <Tab value='0' label="Artists" />
-                                <Tab value='1' label="DJs" />
-                                <Tab value='2' label="Radio Shows" />
-                            </Tabs>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TabPanel value={value} />
-                        </Grid>
-                    </Grid>
-                </Box>
-
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <Box></Box>
+                </Grid>
                 <Grid item xs={12}>
                     <Typography>Our data comes from the following curators:</Typography>
                 </Grid>
@@ -121,6 +120,7 @@ export default function Homepage(props) {
                     </Container>
                 </Grid>
             </Grid>
-        </Box>
+
+        </div>
     )
 }
