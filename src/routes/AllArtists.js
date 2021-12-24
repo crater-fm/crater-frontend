@@ -8,6 +8,9 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import Pagination from '../Pagination.js'
+import { useLocation } from 'react-router-dom';
+
 
 const AllArtistsList = (props) => {
     let artistList = [];
@@ -53,10 +56,14 @@ const AllArtistsList = (props) => {
 export default function AllArtists(props) {
     let displayPage = props.displayPage;
     let [allArtists, setAllArtists] = useState(null);
+    const location = useLocation();
+ 
 
     useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page') || '1', 20);
         let mounted = true;
-        getAllArtists(setAllArtists, mounted);
+        getAllArtists(setAllArtists, page, mounted);
         return () => {
             mounted = false;
         }
@@ -67,6 +74,9 @@ export default function AllArtists(props) {
     }
 
     return (
+        <Box>
         <AllArtistsList allArtists={allArtists} displayPage={displayPage} />
+        <Pagination /> 
+        </Box>
     )
 }
