@@ -74,7 +74,7 @@ const ArtistDetailsLists = (props) => {
                 let ytLink = `https://www.youtube.com/results?search_query=${artistName}+${element.song.song_name}`
                 songArtistList[index] =
                     <ListItem key={element.song_artist_id} >
-                        <ListItemButton component="a" href={ytLink} dense>
+                        <ListItemButton component="a" href={ytLink} target="_blank" rel="noreferrer" dense>
                             <ListItemText>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <Typography>{element.song.song_name}</Typography>
