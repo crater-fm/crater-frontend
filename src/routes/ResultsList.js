@@ -76,7 +76,7 @@ export default function ResultsList(props) {
         return () => {
             mounted = false;
         }
-    }, [searchValue])
+    }, [searchValue, setSearchResults])
 
     return (
         <div className="results">

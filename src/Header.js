@@ -82,6 +82,11 @@ export default function Header(props) {
                                     <Typography textAlign="center">DJs</Typography>
                                 </NavLink>
                             </MenuItem>
+                            <MenuItem key='episode' onClick={handleCloseNavMenu}>
+                                <NavLink to="episode">
+                                    <Typography textAlign="center">Episodes</Typography>
+                                </NavLink>
+                            </MenuItem>
                             <MenuItem key='info' onClick={handleCloseNavMenu}>
                                 <NavLink to="info">
                                     <Typography textAlign="center">Info</Typography>

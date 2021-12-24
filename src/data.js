@@ -39,8 +39,8 @@ export function getDjDetails(djId, setStateVar, mounted) {
         })
 }
 
-export function getAllArtists(setStateVar, mounted) {
-    axios.get('https://crater-backend.herokuapp.com/api/artist')
+export function getAllArtists(setStateVar, page, mounted) {
+    axios.get(`https://crater-backend.herokuapp.com/api/artist?format=json&page=${page}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);
@@ -52,8 +52,21 @@ export function getAllArtists(setStateVar, mounted) {
         })
 }
 
-export function getAllDjs(setStateVar, mounted) {
-    axios.get('https://crater-backend.herokuapp.com/api/dj')
+export function getAllDjs(setStateVar, page, mounted) {
+    axios.get(`https://crater-backend.herokuapp.com/api/dj?format=json&page=${page}`)
+        .then((res) => {
+            if (mounted) {
+                setStateVar(res.data);
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+}
+
+export function getAllEpisodes(setStateVar, page, mounted) {
+    axios.get(`https://crater-backend.herokuapp.com/api/episode?format=json&page=${page}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);

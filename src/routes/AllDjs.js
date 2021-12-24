@@ -8,6 +8,8 @@ import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
+import PaginationLink from '../PaginationLink.js'
+import { useLocation } from 'react-router-dom';
 
 
 const AllDjsList = (props) => {
@@ -54,20 +56,34 @@ const AllDjsList = (props) => {
 export default function AllDjs(props) {
     let displayPage = props.displayPage
     let [allDjs, setAllDjs] = useState(null);
+    const location = useLocation();
+    const query = new URLSearchParams(location.search);
+    const page = parseInt(query.get('page') || '1', 20);
 
     useEffect(() => {
         let mounted = true;
-        getAllDjs(setAllDjs, mounted);
+        getAllDjs(setAllDjs, page, mounted);
         return () => {
             mounted = false;
         }
-    }, []);
+    }, [page, setAllDjs]);
 
     if (allDjs === null) {
         return null;
     }
 
+    if (displayPage === 'homepage') {
+        return (
+            <Box>
+                <AllDjsList allDjs={allDjs} displayPage={displayPage} />
+            </Box>
+        )
+    }
+
     return (
-        <AllDjsList allDjs={allDjs} displayPage={displayPage}/>
+        <Box>
+            <AllDjsList allDjs={allDjs} displayPage={displayPage}/>
+            <PaginationLink />            
+        </Box>
     )
 }

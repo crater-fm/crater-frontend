@@ -25,19 +25,3 @@ li {
     width: auto;
     height: 35px;
 }
-
-.curatorLogoContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    gap: 50px;
-}
-
-.statsColumnContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    gap: 50px;
-}

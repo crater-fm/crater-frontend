@@ -16,6 +16,7 @@ import LoginPage from './routes/LoginPage.js'
 import ResultsList from './routes/ResultsList.js'
 import AllArtists from './routes/AllArtists.js'
 import AllDjs from './routes/AllDjs.js'
+import AllEpisodes from './routes/AllEpisodes.js'
 import ArtistPage from './routes/ArtistPage.js'
 import DjPage from './routes/DjPage.js'
 import Homepage from './routes/Homepage.js'
@@ -53,6 +54,7 @@ function App() {
                         <Route exact path="dj" element={<AllDjs />} />
                         <Route path="dj/:djId" element={<DjPage />} />
                         <Route path="search/:searchValue" element={<ResultsList />} />
+                        <Route exact path="episode" element={<AllEpisodes />} />
                         <Route exact path="info" element={<CraterInfo />} />
                         <Route path="*" element={<NotFound />} />
                     </Route>

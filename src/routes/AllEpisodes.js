@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
 import dateToString from '../utils.js'
+import PaginationLink from '../PaginationLink.js'
+import { useLocation } from 'react-router-dom';
 
 const AllEpisodesList = (props) => {
     let episodeList = [];
@@ -55,20 +57,34 @@ const AllEpisodesList = (props) => {
 export default function AllEpisodes(props) {
     let displayPage = props.displayPage
     let [allEpisodes, setAllEpisodes] = useState(null);
+    const location = useLocation();
+    const query = new URLSearchParams(location.search);
+    const page = parseInt(query.get('page') || '1', 20);
 
     useEffect(() => {
         let mounted = true;
-        getAllEpisodes(setAllEpisodes, mounted);
+        getAllEpisodes(setAllEpisodes, page, mounted);
         return () => {
             mounted = false;
         }
-    }, []);
+    }, [page, setAllEpisodes]);
 
     if (allEpisodes === null) {
         return null;
     }
 
+    if (displayPage === 'homepage') {
+        return (
+            <Box>
+                <AllEpisodesList allEpisodes={allEpisodes} displayPage={displayPage} />
+            </Box>
+        )
+    }
+
     return (
-        <AllEpisodesList allEpisodes={allEpisodes} displayPage={displayPage} />
+        <Box>
+            <AllEpisodesList allEpisodes={allEpisodes} displayPage={displayPage} />
+            <PaginationLink />            
+        </Box>
     )
 }
