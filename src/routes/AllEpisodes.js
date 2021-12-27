@@ -10,7 +10,9 @@ import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
 import dateToString from '../utils.js'
 import PaginationLink from '../PaginationLink.js'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+import Divider from '@mui/material/Divider'
+
 
 const AllEpisodesList = (props) => {
     let episodeList = [];
@@ -19,17 +21,20 @@ const AllEpisodesList = (props) => {
 
     allEpisodes.results.forEach((element, index) => {
         episodeList[index] =
-            <ListItem key={element.episode_id}>
-                <ListItemButton component="a" href={element.episode_url} target="_blank" rel="noreferrer" dense>
-                    <ListItemText>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Typography>{element.episode_name}</Typography>
-                            
-                            <Typography>{dateToString(element.episode_date)}</Typography>
-                        </Box>
-                    </ListItemText>
-                </ListItemButton>
-            </ListItem>
+            <div>
+                <ListItem key={element.episode_id}>
+                    <ListItemButton component="a" href={element.episode_url} target="_blank" rel="noreferrer" dense>
+                        <ListItemText>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <Typography>{element.episode_name}</Typography>
+
+                                <Typography>{dateToString(element.episode_date)}</Typography>
+                            </Box>
+                        </ListItemText>
+                    </ListItemButton>
+                </ListItem>
+                <Divider component="li" />
+            </div>
     })
 
     // Concatenate results if rendered on the homepage
@@ -44,7 +49,11 @@ const AllEpisodesList = (props) => {
             borderRadius: 1,
             p: 2,
         }}>
-            <Typography>Recent Episodes</Typography>
+            <Typography variant="h5" component="h5" sx={{ p: 1 }}>
+                <Link to="/episode">
+                    Recent Episodes
+                </Link>
+            </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>Episode</Typography>
                 <Typography>Broadcast Date</Typography>
@@ -75,16 +84,14 @@ export default function AllEpisodes(props) {
 
     if (displayPage === 'homepage') {
         return (
-            <Box>
-                <AllEpisodesList allEpisodes={allEpisodes} displayPage={displayPage} />
-            </Box>
+            <AllEpisodesList allEpisodes={allEpisodes} displayPage={displayPage} />
         )
     }
 
     return (
         <Box>
             <AllEpisodesList allEpisodes={allEpisodes} displayPage={displayPage} />
-            <PaginationLink />            
+            <PaginationLink />
         </Box>
     )
 }

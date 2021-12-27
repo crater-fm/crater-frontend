@@ -44,7 +44,7 @@ export default function Homepage(props) {
         <div>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={12} xl={12}>
-                    <Typography>Discover new music with Crater</Typography>
+                    <Typography variant="h5" component="h5" sx={{p: 1}}>Discover new music with Crater</Typography>
                 </Grid>
                 <Grid item xs={12} md={12} xl={12}>
                     <Searchbar searchValue={searchValue} onSearchValueChange={handleSearchValueChange} onSearchValueSubmit={handleSearchValueSubmit} />
@@ -84,7 +84,7 @@ export default function Homepage(props) {
                     <Box></Box>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography>Our data comes from the following curators:</Typography>
+                    <Typography variant="h6" component="h6" sx={{ p: 1 }}>Our data comes from the following curators:</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Container sx={{

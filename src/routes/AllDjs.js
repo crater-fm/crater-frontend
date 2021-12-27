@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
 import PaginationLink from '../PaginationLink.js'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 
 const AllDjsList = (props) => {
@@ -19,16 +19,19 @@ const AllDjsList = (props) => {
 
     allDjs.results.forEach((element, index) => {
         djList[index] =
+            <div>
                 <ListItem key={element.dj_id}>
-                <ListItemButton component="a" href={`/dj/${element.dj_id}`} dense>
-                    <ListItemText>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Typography>{element.dj_name}</Typography>
-                            <Typography>{element.episode_count}</Typography>
-                        </Box>
-                    </ListItemText>
-                </ListItemButton>
+                    <ListItemButton component="a" href={`/dj/${element.dj_id}`} dense>
+                        <ListItemText>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <Typography>{element.dj_name}</Typography>
+                                <Typography>{element.episode_count}</Typography>
+                            </Box>
+                        </ListItemText>
+                    </ListItemButton>
                 </ListItem>
+            </div>
+
     })
 
     // Concatenate results if rendered on the homepage
@@ -43,7 +46,11 @@ const AllDjsList = (props) => {
             borderRadius: 1,
             p: 2,
         }}>
-            <Typography>Top DJs</Typography>
+            <Typography variant="h5" component="h5" sx={{ p: 1 }}>
+                <Link to="/dj">
+                    Top DJs
+                </Link>
+            </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>DJ</Typography>
                 <Typography>Episode Count</Typography>
@@ -74,16 +81,14 @@ export default function AllDjs(props) {
 
     if (displayPage === 'homepage') {
         return (
-            <Box>
-                <AllDjsList allDjs={allDjs} displayPage={displayPage} />
-            </Box>
+            <AllDjsList allDjs={allDjs} displayPage={displayPage} />
         )
     }
 
     return (
         <Box>
-            <AllDjsList allDjs={allDjs} displayPage={displayPage}/>
-            <PaginationLink />            
+            <AllDjsList allDjs={allDjs} displayPage={displayPage} />
+            <PaginationLink />
         </Box>
     )
 }

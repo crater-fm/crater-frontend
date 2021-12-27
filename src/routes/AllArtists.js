@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import PaginationLink from '../PaginationLink.js'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 
 const AllArtistsList = (props) => {
@@ -19,16 +19,19 @@ const AllArtistsList = (props) => {
 
     allArtists.results.forEach((element, index) => {
         artistList[index] =
-            <ListItem key={element.artist_id} >
-                <ListItemButton component="a" href={`/artist/${element.artist_id}`} dense>
-                    <ListItemText>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Typography>{element.artist_name}</Typography>
-                            <Typography>{element.play_count}</Typography>
-                        </Box>
-                    </ListItemText>
-                </ListItemButton>
-            </ListItem>
+            <div>
+                <ListItem key={element.artist_id} >
+                    <ListItemButton component="a" href={`/artist/${element.artist_id}`} dense>
+                        <ListItemText>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <Typography>{element.artist_name}</Typography>
+                                <Typography>{element.play_count}</Typography>
+                            </Box>
+                        </ListItemText>
+                    </ListItemButton>
+                </ListItem>
+            </div>
+
     })
 
     // Concatenate results if rendered on the homepage
@@ -43,7 +46,11 @@ const AllArtistsList = (props) => {
             borderRadius: 1,
             p: 2,
         }}>
-            <Typography>Top Artists</Typography>
+            <Typography variant="h5" component="h5" sx={{ p: 1 }}>
+                <Link to="/artist">
+                    Top Artists
+                </Link>
+            </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>Artist</Typography>
                 <Typography>Play Count</Typography>
@@ -74,17 +81,15 @@ export default function AllArtists(props) {
     }
 
     if (displayPage === 'homepage') {
-        return(
-            <Box>
-                <AllArtistsList allArtists={allArtists} displayPage={displayPage} />
-            </Box>
+        return (
+            <AllArtistsList allArtists={allArtists} displayPage={displayPage} />
         )
     }
 
     return (
         <Box>
             <AllArtistsList allArtists={allArtists} displayPage={displayPage} />
-            <PaginationLink displayPage={displayPage}/> 
+            <PaginationLink displayPage={displayPage} />
         </Box>
     )
 }

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getArtistDetails } from '../data.js'
-import EpisodeResult from './EpisodeResult.js'
-import SongArtistResult from './SongArtistResult.js'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -99,7 +97,7 @@ const ArtistDetailsLists = (props) => {
         <div>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={12} xl={12}>
-                    <Typography>Key Stats for {artistName}</Typography>
+                    <Typography variant="h5" component="h5" sx={{ p: 1 }}>Key Stats for {artistName}</Typography>
                 </Grid>
                 <Grid item md={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <Container sx={{
@@ -108,7 +106,7 @@ const ArtistDetailsLists = (props) => {
                         borderRadius: 1,
                         p: 2,
                     }}>
-                        <h5>Top songs by this artist:</h5>
+                        <Typography>Top songs by this artist:</Typography>
                         <List>{songArtistList}</List>
                     </Container>
                 </Grid>
@@ -119,7 +117,7 @@ const ArtistDetailsLists = (props) => {
                         borderRadius: 1,
                         p: 2,
                     }}>
-                        <h5>DJs who play this artist:</h5>
+                        <Typography>DJs who play this artist:</Typography>
                         <List>{djList}</List>
                     </Container>
                 </Grid>
@@ -130,7 +128,7 @@ const ArtistDetailsLists = (props) => {
                         borderRadius: 1,
                         p: 2,
                     }}>
-                        <h5>Episodes featuring this artist:</h5>
+                        <Typography>Episodes featuring this artist:</Typography>
                         <List>{episodeList}</List>
                     </Container>
                 </Grid>

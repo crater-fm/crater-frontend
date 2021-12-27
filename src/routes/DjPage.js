@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getDjDetails } from '../data.js'
-import EpisodeResult from './EpisodeResult.js'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -79,7 +78,7 @@ const DjDetailsLists = (props) => {
         <div>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={12} xl={12}>
-                    <Typography>Key Stats for {djName}</Typography>
+                    <Typography variant="h5" component="h5" sx={{ p: 1 }}>Key Stats for {djName}</Typography>
                 </Grid>
                 <Grid item md={6} sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <Container sx={{
@@ -88,7 +87,7 @@ const DjDetailsLists = (props) => {
                         borderRadius: 1,
                         p: 2,
                     }}>
-                        <h5>Artists this DJ spins:</h5>
+                        <Typography>Artists this DJ spins:</Typography>
                         <List>{artistList}</List>
                     </Container>
                 </Grid>
@@ -99,7 +98,7 @@ const DjDetailsLists = (props) => {
                         borderRadius: 1,
                         p: 2,
                     }}>
-                        <h5>Episodes by this DJ:</h5>
+                        <Typography>Episodes by this DJ:</Typography>
                         <List>{episodeList}</List>
                     </Container>
                 </Grid>
