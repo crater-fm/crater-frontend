@@ -33,7 +33,6 @@ const AllEpisodesList = (props) => {
                         </ListItemText>
                     </ListItemButton>
                 </ListItem>
-                <Divider component="li" />
             </div>
     })
 
