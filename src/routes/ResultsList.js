@@ -8,10 +8,13 @@ const ListHeader = (props) => {
     const searchResults = props.searchResults;
     const searchValue = props.searchValue;
     var resultsLength = 0;
+    var keylist = '';
     Object.entries(searchResults).forEach((entry) => {
         const [key, value] = entry;
         resultsLength = resultsLength + value.length
+        keylist = keylist + key; // This is just to avoid unused variable warning
     })
+
     return (
         <h4 className='results-header'>{resultsLength} search results for {searchValue}</h4>
     )
@@ -27,7 +30,7 @@ const ListBody = (props) => {
         if (key === 'artists') {
             value.forEach((element, index) => {
                 subResults[index] =
-                    <li className='artist-listitem'>
+                    <li className='artist-listitem' key={element.artist_id}>
                         <h6>Artist</h6>
                         <Link to={`/artist/${element.artist_id}`} key={element.artist_id}>{element.artist_name}</Link>
                     </li>;
@@ -35,7 +38,7 @@ const ListBody = (props) => {
         } else if (key === 'djs') {
             value.forEach((element, index) => {
                 subResults[index] =
-                    <li className='dj-listitem'>
+                    <li className='dj-listitem' key={element.dj_id}>
                         <h6>DJ</h6>
                         <Link to={`/dj/${element.dj_id}`} key={element.dj_id}>{element.dj_name}</Link>
                     </li>;
@@ -43,7 +46,7 @@ const ListBody = (props) => {
         } else if (key === 'episodes') {
             value.forEach((element, index) => {
                 subResults[index] =
-                    <li className='episode-listitem'>
+                    <li className='episode-listitem' key={element.episode_id}>
                         <h6>Episode</h6>
                         <EpisodeResult key={element.episode_id} value={element} />
                     </li>;
