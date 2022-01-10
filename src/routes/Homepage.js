@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ntsLogo from "../img/nts_icon.png"
-import dublabLogo from '../img/dublab-logo-transparent.png'
-import kxluLogo from '../img/KXLU-Black.png'
+// import dublabLogo from '../img/dublab-logo-transparent.png'
+// import kxluLogo from '../img/KXLU-Black.png'
 import Searchbar from './Searchbar.js'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
@@ -49,13 +49,13 @@ export default function Homepage(props) {
                 <Grid item xs={12} md={12} xl={12}>
                     <Searchbar searchValue={searchValue} onSearchValueChange={handleSearchValueChange} onSearchValueSubmit={handleSearchValueSubmit} />
                 </Grid>
-                <Grid item md={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <Grid item md={4} xl={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <AllArtists displayPage='homepage' />
                 </Grid>
-                <Grid item md={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <Grid item md={4} xl={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <AllDjs displayPage='homepage' />
                 </Grid>
-                <Grid item md={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <Grid item md={4} xl={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <AllEpisodes displayPage='homepage' />
                 </Grid>
             </Grid>
@@ -98,10 +98,10 @@ export default function Homepage(props) {
                                 component="img"
                                 alt="NTS Radio"
                                 src={ntsLogo}
-                                sx={{ width: 'auto', height: 100 }}
+                                sx={{ width: 'auto', height: 200 }}
                             />
                         </a>
-                        <a href="https://www.dublab.com/" target="_blank" rel="noreferrer">
+                        {/* <a href="https://www.dublab.com/" target="_blank" rel="noreferrer">
                             <Box
                                 component="img"
                                 alt="Dublab Future Roots Radio"
@@ -116,7 +116,7 @@ export default function Homepage(props) {
                                 src={kxluLogo}
                                 sx={{ width: 'auto', height: 100 }}
                             />
-                        </a>
+                        </a> */}
                     </Container>
                 </Grid>
             </Grid>

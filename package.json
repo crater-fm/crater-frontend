@@ -54,9 +54,6 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.2.3",
-    "babel-polyfill": "^6.26.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^4.9.1"
+    "babel-polyfill": "^6.26.0"
   }
 }
