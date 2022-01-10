@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default function getGlobalSearch(searchValue, setStateVar, mounted) {
-    axios.get(`https://crater-backend.herokuapp.com/api/search/${searchValue}`)
+    axios.get(`http://crater-api.eu-west-2.elasticbeanstalk.com/api/search/${searchValue}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);
@@ -14,7 +14,7 @@ export default function getGlobalSearch(searchValue, setStateVar, mounted) {
 }
 
 export function getArtistDetails(artistId, setStateVar, mounted) {
-    axios.get(`https://crater-backend.herokuapp.com/api/artist/${artistId}`)
+    axios.get(`http://crater-api.eu-west-2.elasticbeanstalk.com/api/artist/${artistId}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);
@@ -27,7 +27,7 @@ export function getArtistDetails(artistId, setStateVar, mounted) {
 }
 
 export function getDjDetails(djId, setStateVar, mounted) {
-    axios.get(`https://crater-backend.herokuapp.com/api/dj/${djId}`)
+    axios.get(`http://crater-api.eu-west-2.elasticbeanstalk.com/api/dj/${djId}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);
@@ -40,7 +40,7 @@ export function getDjDetails(djId, setStateVar, mounted) {
 }
 
 export function getAllArtists(setStateVar, page, mounted) {
-    axios.get(`https://crater-backend.herokuapp.com/api/artist?format=json&page=${page}`)
+    axios.get(`http://crater-api.eu-west-2.elasticbeanstalk.com/api/artist?format=json&page=${page}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);
@@ -53,7 +53,7 @@ export function getAllArtists(setStateVar, page, mounted) {
 }
 
 export function getAllDjs(setStateVar, page, mounted) {
-    axios.get(`https://crater-backend.herokuapp.com/api/dj?format=json&page=${page}`)
+    axios.get(`http://crater-api.eu-west-2.elasticbeanstalk.com/api/dj?format=json&page=${page}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);
@@ -66,7 +66,7 @@ export function getAllDjs(setStateVar, page, mounted) {
 }
 
 export function getAllEpisodes(setStateVar, page, mounted) {
-    axios.get(`https://crater-backend.herokuapp.com/api/episode?format=json&page=${page}`)
+    axios.get(`http://crater-api.eu-west-2.elasticbeanstalk.com/api/episode?format=json&page=${page}`)
         .then((res) => {
             if (mounted) {
                 setStateVar(res.data);
