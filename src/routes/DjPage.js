@@ -15,11 +15,33 @@ import Container from '@mui/material/Container'
 
 function TabPanel(props) {
     let value = props.value;
+    let artistList = props.artistList;
+    let episodeList = props.episodeList;
 
     if (value === '0') {
-        return null;
+        return (
+            <Container sx={{
+                bgcolor: '#8BFFDC',
+                boxShadow: 1,
+                borderRadius: 1,
+                p: 2,
+            }}>
+                <Typography>Artists this DJ spins:</Typography>
+                <List>{artistList}</List>
+            </Container>
+        );
     } else if (value === '1') {
-        return null;
+        return (
+            <Container sx={{
+                bgcolor: '#C1A6FF',
+                boxShadow: 1,
+                borderRadius: 1,
+                p: 2,
+            }}>
+                <Typography>Episodes by this DJ:</Typography>
+                <List>{episodeList}</List>
+            </Container>
+        );
     } else {
         return null;
     }
@@ -117,7 +139,7 @@ const DjDetailsLists = (props) => {
                     </Tabs>
                 </Grid>
                 <Grid item xs={12}>
-                    <TabPanel value={value} />
+                    <TabPanel value={value} artistList={artistList} episodeList={episodeList}/>
                 </Grid>
             </Grid>
         </div>

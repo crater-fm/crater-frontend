@@ -15,18 +15,50 @@ import dateToString from '../utils.js'
 
 function TabPanel(props) {
     let value = props.value;
+    let songArtistList = props.songArtistList;
+    let djList = props.djList;
+    let episodeList = props.episodeList;
 
     if (value === '0') {
-        return null;
+        return (
+            <Container sx={{
+                bgcolor: '#8BFFDC',
+                boxShadow: 1,
+                borderRadius: 1,
+                p: 2,
+            }}>
+                <Typography>Top songs by this artist:</Typography>
+                <List>{songArtistList}</List>
+            </Container>
+        );
     } else if (value === '1') {
-        return null;
+        return (
+            <Container sx={{
+                bgcolor: '#FFB68C',
+                boxShadow: 1,
+                borderRadius: 1,
+                p: 2,
+            }}>
+                <Typography>DJs who play this artist:</Typography>
+                <List>{djList}</List>
+            </Container>
+        );
     } else if (value === '2') {
-        return null;
+        return (
+            <Container sx={{
+                bgcolor: '#C1A6FF',
+                boxShadow: 1,
+                borderRadius: 1,
+                p: 2,
+            }}>
+                <Typography>Episodes featuring this artist:</Typography>
+                <List>{episodeList}</List>
+            </Container>
+        );
     } else {
         return null;
     }
 }
-
 
 const ArtistDetailsLists = (props) => {
     const episodeList = [];
@@ -149,7 +181,7 @@ const ArtistDetailsLists = (props) => {
                     </Tabs>
                 </Grid>
                 <Grid item xs={12}>
-                    <TabPanel value={value} />
+                    <TabPanel value={value} songArtistList={songArtistList} djList={djList} episodeList={episodeList}/>
                 </Grid>
             </Grid>
         </div>
