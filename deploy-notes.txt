@@ -1,7 +1,0 @@
-npm run build
-git add .
-git commit -m 'message'
-git push
-heroku login
-git remote add heroku crater-frontend
-git push heroku master
