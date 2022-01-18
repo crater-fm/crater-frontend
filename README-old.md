@@ -1,12 +1,4 @@
-# Crater
-
-## Project Description
-Crater is a single-page application that lets users browse through DJ tracklist data aggregated from internet radio stations.
-* Responsive React front-end using React-Router, Material-UI, and CSS-in-JS, deployed with Create-React-App on Vercel
-* Back-end REST API using Django-REST-Framework and PostgreSQL, deployed on AWS Elastic Beanstalk, secured with HTTPS
-* Sketched user flows and wireframes in Figma with a UX designer and managed work using a Kanban board and GitHub issues
-
-## Create React App
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
