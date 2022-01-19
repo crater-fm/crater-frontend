@@ -26,7 +26,10 @@ function TabPanel(props) {
                 borderRadius: 1,
                 p: 2,
             }}>
-                <Typography>Artists this DJ spins:</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Typography>Artists this DJ spins:</Typography>
+                    <Typography>Play Count</Typography>
+                </Box>
                 <List>{artistList}</List>
             </Container>
         );
@@ -38,7 +41,10 @@ function TabPanel(props) {
                 borderRadius: 1,
                 p: 2,
             }}>
-                <Typography>Episodes by this DJ:</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Typography>Episodes by this DJ:</Typography>
+                    <Typography>Broadcast Date</Typography>
+                </Box>
                 <List>{episodeList}</List>
             </Container>
         );
@@ -79,7 +85,7 @@ const DjDetailsLists = (props) => {
                             <ListItemText>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <Typography>{element.artist_name}</Typography>
-                                    <Typography>{dateToString(element.play_count)}</Typography>
+                                    <Typography>{element.djdetails_play_count}</Typography>
                                 </Box>
                             </ListItemText>
                         </ListItemButton>
@@ -109,7 +115,10 @@ const DjDetailsLists = (props) => {
                         borderRadius: 1,
                         p: 2,
                     }}>
-                        <Typography>Artists this DJ spins:</Typography>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Typography>Artists this DJ spins:</Typography>
+                            <Typography>Play Count</Typography>
+                        </Box>
                         <List>{artistList}</List>
                     </Container>
                 </Grid>
@@ -120,7 +129,10 @@ const DjDetailsLists = (props) => {
                         borderRadius: 1,
                         p: 2,
                     }}>
-                        <Typography>Episodes by this DJ:</Typography>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Typography>Episodes by this DJ:</Typography>
+                            <Typography>Broadcast Date</Typography>
+                        </Box>
                         <List>{episodeList}</List>
                     </Container>
                 </Grid>

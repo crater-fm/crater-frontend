@@ -103,22 +103,6 @@ export default function Homepage(props) {
                                 sx={{ width: 'auto', height: 200 }}
                             />
                         </a>
-                        {/* <a href="https://www.dublab.com/" target="_blank" rel="noreferrer">
-                            <Box
-                                component="img"
-                                alt="Dublab Future Roots Radio"
-                                src={dublabLogo}
-                                sx={{ width: 'auto', height: 100 }}
-                            />
-                        </a>
-                        <a href="https://kxlu.com/" target="_blank" rel="noreferrer">
-                            <Box
-                                component="img"
-                                alt="KXLU Radio"
-                                src={kxluLogo}
-                                sx={{ width: 'auto', height: 100 }}
-                            />
-                        </a> */}
                     </Container>
                 </Grid>
             </Grid>
