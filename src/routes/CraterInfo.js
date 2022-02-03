@@ -21,7 +21,7 @@ export default function CraterInfo() {
                     display: 'flex',
                     justifyContent: 'flex-end'
                 }}>
-                    <Button variant="contained" href="http://www.drewnollsch.com" target="_blank" rel="noreferrer">Website</Button>
+                    <Button variant="contained" href="http://about.drewnollsch.com" target="_blank" rel="noreferrer">Website</Button>
                 </Grid>
                 <Grid item xs={4} md={4} xl={4} sx={{
                     display: 'flex',
