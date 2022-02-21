@@ -1,57 +1,62 @@
-import React from 'react';
-import './index.css';
-import Searchbar from './routes/Searchbar'
-import ResultsList from './routes/ResultsList'
-import Filter from './Filter'
-import LoginControl from './LoginControl.js'
-import axios from "axios";
-import { Outlet } from "react-router-dom";
-import { globalSearch } from './data';
+import React, { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import theme from "./theme.js";
+import LoginPage from "./routes/LoginPage.js";
+import ResultsList from "./routes/ResultsList.js";
+import AllArtists from "./routes/AllArtists.js";
+import AllDjs from "./routes/AllDjs.js";
+import AllEpisodes from "./routes/AllEpisodes.js";
+import ArtistPage from "./routes/ArtistPage.js";
+import DjPage from "./routes/DjPage.js";
+import Homepage from "./routes/Homepage.js";
+import NotFound from "./routes/NotFound.js";
+import CraterInfo from "./routes/CraterInfo.js";
+import Layout from "./Layout.js";
 
-const dotenv = require('dotenv');
-dotenv.config();
+export default function App() {
+  let [searchValue, setSearchValue] = useState();
+  let navigate = useNavigate();
 
-// TODO: figure out how to use React Native Safe Area Context
+  function handleSearchValueChange(value) {
+    setSearchValue(value);
+  }
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchValue: '',
-            searchResults: [],
-            loading: true
-        };
-        this.handleSearchValueChange = this.handleSearchValueChange.bind(this);
-        this.handleSearchValueSubmit = this.handleSearchValueSubmit.bind(this);
+  function handleSearchValueSubmit(event) {
+    event.preventDefault();
+    if (searchValue) {
+      navigate(`./search/${searchValue}`, { replace: true });
     }
+  }
 
-    handleSearchValueChange(value) {
-        this.setState({ searchValue: value })
-    }
-
-    handleSearchValueSubmit(event) {
-        const searchValue = this.state.searchValue;
-
-        event.preventDefault();
-
-        globalSearch(searchValue);
-    }
-
-
-
-    render() {
-
-        const searchValue = this.state.searchValue;
-        const searchResults = this.state.searchResults;
-
-        return (
-            <div className="container">
-                <Searchbar searchValue={searchValue} onSearchValueChange={this.handleSearchValueChange} onSearchValueSubmit={this.handleSearchValueSubmit} />
-                <div>
-                    <ResultsList searchResults={searchResults} searchValue={searchValue} />
-                </div>
-            </div>
-        )
-    }
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <Homepage
+                  searchValue={searchValue}
+                  handleSearchValueChange={handleSearchValueChange}
+                  handleSearchValueSubmit={handleSearchValueSubmit}
+                />
+              }
+            />
+            <Route path="login" element={<LoginPage />} />
+            <Route exact path="artist" element={<AllArtists />} />
+            <Route path="artist/:artistId" element={<ArtistPage />} />
+            <Route exact path="dj" element={<AllDjs />} />
+            <Route path="dj/:djId" element={<DjPage />} />
+            <Route path="search/:searchValue" element={<ResultsList />} />
+            <Route exact path="episode" element={<AllEpisodes />} />
+            <Route exact path="info" element={<CraterInfo />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </CssBaseline>
+    </ThemeProvider>
+  );
 }
-export default App
