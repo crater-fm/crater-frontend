@@ -13,6 +13,7 @@ import DjPage from "./routes/DjPage.js";
 import Homepage from "./routes/Homepage.js";
 import NotFound from "./routes/NotFound.js";
 import CraterInfo from "./routes/CraterInfo.js";
+import Playground from "./routes/Playground.js";
 import Layout from "./Layout.js";
 
 export default function App() {
@@ -53,6 +54,7 @@ export default function App() {
             <Route path="search/:searchValue" element={<ResultsList />} />
             <Route exact path="episode" element={<AllEpisodes />} />
             <Route exact path="info" element={<CraterInfo />} />
+            <Route exact path="playground" element={<Playground />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
